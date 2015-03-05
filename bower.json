@@ -1,0 +1,15 @@
+{
+  "name": "todo",
+  "version": "0.0.0",
+  "authors": [
+    "Michael Young <michaely@icracked.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "todomvc-common": "~1.0.1",
+    "todomvc-app-css": "~1.0.1",
+    "canjs": "~2.1.4",
+    "jquery": "~2.1.3"
+  }
+}
