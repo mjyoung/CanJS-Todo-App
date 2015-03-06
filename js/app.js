@@ -107,6 +107,16 @@ can.Component.extend({
 			else {
 				return todos;
 			}
+		},
+		clearCompleted: function() {
+			console.log("Clearing completed!");
+			var todos = this.attr('todos');
+			todos.each(function(todo, index) {
+				if (todo.completed) {
+					todo.destroy();
+				}
+			});
+			console.log("Todos:", todos)
 		}
 	},
 	helpers: {
