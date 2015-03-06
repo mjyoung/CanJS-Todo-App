@@ -116,7 +116,7 @@ can.Component.extend({
 					todo.destroy();
 				}
 			});
-			console.log("Todos:", todos)
+			console.log("Todos:", todos);
 		}
 	},
 	helpers: {
