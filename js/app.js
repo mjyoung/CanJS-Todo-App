@@ -131,4 +131,7 @@ can.Component.extend({
 var frag = can.view("app-template", {});
 
 $("#app").html( frag );
+
+can.route("poopy_:filter");
+
 can.route.ready();
