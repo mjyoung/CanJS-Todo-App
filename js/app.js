@@ -8,10 +8,15 @@ can.fixture("GET /services/todos", function() {
 	];
 	return todos;
 });
-can.fixture.delay = 2000;
+// can.fixture.delay = 1000;
+
+can.fixture("DELETE /services/todos/{id}", function() {
+	return {};
+});
 
 Todo = can.Model.extend({
-	findAll: "GET /services/todos"
+	findAll: "GET /services/todos",
+	destroy: "DELETE /services/todos/{id}"
 }, {});
 
 Todo.List = Todo.List.extend({

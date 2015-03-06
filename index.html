@@ -20,9 +20,9 @@
             {{#each todos}}
               <li class="todo {{#if completed}}completed{{/if}}">
                 <div class="view">
-                  <input class="toggle" type="checkbox">
+                  <input class="toggle" type="checkbox" can-value="completed">
                   <label>{{name}}</label>
-                  <button class="destroy"></button>
+                  <button class="destroy" can-click="destroy"></button>
                 </div>
                 <input class="edit" type="text" value="{{name}}">
               </li>
