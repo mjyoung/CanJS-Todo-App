@@ -8,26 +8,18 @@
   </head>
   <body>
     <script type="text/mustache" id="app-template">
+    	<todos-app>
       <section id="todoapp">
         <header id="header">
           <h1>todos</h1>
-          <input id="new-todo" placeholder="What needs to be done?" autofocus>
+          <todos-create></todos-create>
         </header>
         <section id="main">
           <input id="toggle-all" type="checkbox">
           <label for="toggle-all">Mark all as complete</label>
-          <ul id="todo-list">
-            {{#each todos}}
-              <li class="todo {{#if completed}}completed{{/if}}">
-                <div class="view">
-                  <input class="toggle" type="checkbox" can-value="completed">
-                  <label>{{name}}</label>
-                  <button class="destroy" can-click="destroy"></button>
-                </div>
-                <input class="edit" type="text" value="{{name}}">
-              </li>
-            {{/each}}
-          </ul>
+
+          <todos-list></todos-list>
+
         </section>
         <footer id="footer">
           <span id="todo-count"><strong>{{todos.activeCount}}</strong> items left</span>
@@ -45,7 +37,26 @@
           <button id="clear-completed">Clear completed</button>
         </footer>
       </section>
+      </todos-app>
     </script>
+
+		<script type="text/mustache" id="todos-list-template">
+			<ul id="todo-list">
+	      {{#each todos}}
+	        <li class="todo {{#if completed}}completed{{/if}}
+	                        {{#if editing}}editing{{/if}}">
+	          <div class="view">
+	            <input class="toggle" type="checkbox" can-value="completed">
+	            <label can-click="editTodo">{{name}}</label>
+	            <button class="destroy" can-click="destroy"></button>
+	          </div>
+	          <input class="edit" type="text" value="{{name}}"
+	          	can-blur="updateTodo"
+	          	can-enter="updateTodo">
+	        </li>
+	      {{/each}}
+	    </ul>
+		</script>
 
     <div id="app"></div>
 
