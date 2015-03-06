@@ -25,13 +25,13 @@
           <span id="todo-count"><strong>{{todos.activeCount}}</strong> items left</span>
           <ul id="filters">
             <li>
-              <a href="#/" class="selected">All</a>
+              <a href="#" class="selected">All</a>
             </li>
             <li>
-              <a href="#/active">Active</a>
+              <a href="#!&filter=active">Active</a>
             </li>
             <li>
-              <a href="#/completed">Completed</a>
+              <a href="#!&filter=completed">Completed</a>
             </li>
           </ul>
           <button id="clear-completed">Clear completed</button>
@@ -42,7 +42,7 @@
 
 		<script type="text/mustache" id="todos-list-template">
 			<ul id="todo-list">
-	      {{#each todos}}
+	      {{#each displayedTodos}}
 	        <li class="todo {{#if completed}}completed{{/if}}
 	                        {{#if editing}}editing{{/if}}">
 	          <div class="view">

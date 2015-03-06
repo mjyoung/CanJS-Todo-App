@@ -47,6 +47,14 @@ Todo.List = Todo.List.extend({
 	},
 	activeCount: function() {
 		return this.active().attr('length')
+	},
+	completed: function() {
+		return this.filter(function(todo) {
+			return todo.attr("completed")
+		})
+	},
+	completedCount: function() {
+		return this.completed().attr('length')
 	}
 });
 
@@ -85,7 +93,21 @@ can.Component.extend({
 can.Component.extend({
 	tag: "todos-app",
 	scope: {
-		todos: new Todo.List({})
+		todos: new Todo.List({}),
+		displayedTodos: function() {
+			var filter = can.route.attr('filter');
+			var todos = this.attr('todos');
+
+			if (filter === 'active') {
+				return todos.active();
+			}
+			else if (filter === 'completed') {
+				return todos.completed();
+			}
+			else {
+				return todos;
+			}
+		}
 	},
 	events: {
 		"{Todo} created": function(Todo, event, newTodo) {
@@ -97,3 +119,4 @@ can.Component.extend({
 var frag = can.view("app-template", {});
 
 $("#app").html( frag );
+can.route.ready();
