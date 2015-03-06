@@ -109,6 +109,18 @@ can.Component.extend({
 			}
 		}
 	},
+	helpers: {
+		filterLink: function(linkText, filterValue) {
+			var attrs = {};
+			if (filterValue) {
+				attrs.filter = filterValue;
+			}
+
+			return can.route.link(linkText, attrs, {
+				className: can.route.attr("filter") === filterValue ? "selected" : ""
+			})
+		}
+	},
 	events: {
 		"{Todo} created": function(Todo, event, newTodo) {
 			this.scope.attr("todos").push(newTodo);
